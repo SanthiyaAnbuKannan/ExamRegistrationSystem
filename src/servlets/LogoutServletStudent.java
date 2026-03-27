@@ -1,0 +1,19 @@
+package servlets;
+
+import java.io.IOException;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+
+public class LogoutServletStudent extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        HttpSession session = req.getSession(false);
+        if (session != null) {
+            session.invalidate(); // destroy session
+        }
+
+        res.sendRedirect("index.jsp"); // go home
+    }
+}
